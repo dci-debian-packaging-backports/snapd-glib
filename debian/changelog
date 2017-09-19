@@ -1,0 +1,453 @@
+snapd-glib (1.23-0ubuntu1) artful; urgency=medium
+
+  * New upstream release:
+    [ 1.23 ]
+    - Fix snapd-login-service crash (LP: #1714486)
+    - Improve failure handling when snapd socket read/writes fail
+    [ 1.22 ]
+    - Make QML module depend on snapd-qt being compiled first
+    - Fix compile warning
+    [ 1.21 ]
+    - Fix MOC detection in Fedora
+    - Handle Qt configure failures
+    [ 1.20 ]
+    - Stop distributing generated files
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Fri, 15 Sep 2017 14:15:28 +1200
+
+snapd-glib (1.19-0ubuntu1) artful; urgency=medium
+
+  * New upstream release:
+    - New API:
+      - snapd_client_get_allow_interaction
+      - snapd_client_set_allow_interaction
+      - snapd_snap_get_license
+    - Add mutex in request queue
+  * debian/libsnapd-glib1.symbols:
+  * debian/libsnapd-qt1.symbols:
+    - Updated
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Tue, 05 Sep 2017 10:16:48 +1200
+
+snapd-glib (1.18-0ubuntu1) artful; urgency=medium
+
+  * New upstream release:
+    - Ensure socket reads never block
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Tue, 29 Aug 2017 16:59:27 +1200
+
+snapd-glib (1.17-0ubuntu1) artful; urgency=medium
+
+  * New upstream release:
+    - Fix issues when accessing snapd-glib from threads.
+    - snapd-qt: Emit the complete signal when requests are cancelled.
+    - Reduce snapd-glib dependency to 1.1.2.
+    - Documentation updates.
+    - Test improvements.
+  * debian/libsnapd-qt1.symbols:
+    - Ignore private Qt symbols
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Mon, 28 Aug 2017 17:18:38 +1200
+
+snapd-glib (1.16-0ubuntu1) artful; urgency=medium
+
+  * New upstream release:
+    - Bring introspection and vapigen m4 macros into the source so can build
+      without them installed.
+    - Fix snapd-qt build failure due to conflict of 'signals' variable with
+      GDBus.
+    - Set a user agent when sending requests to snapd-glib
+  * debian/libsnapd-glib1.symbols:
+  * debian/libsnapd-qt1.symbols:
+    - Updated
+  * debian/watch:
+    - Use new github location for downloads
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Mon, 17 Jul 2017 12:22:35 +1200
+
+snapd-glib (1.15-0ubuntu1) artful; urgency=medium
+
+  * New upstream release:
+    - Marked snapd_system_information_get_confinement as stable
+    - Correctly stop requests if cancelled  
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Fri, 07 Jul 2017 11:29:07 +1200
+
+snapd-glib (1.14-0ubuntu1) artful; urgency=medium
+
+  * New upstream release:
+    - New API:
+      - snapd_app_get_desktop_file
+      - snapd_snap_get_title
+      - snapd_system_information_get_confinement (unstable)
+    - Don't timeout waiting for snapd
+    - Add version defines so can do conditional compilation on new features
+    - Fix compilation with PolKit >= 0.114
+    - Fix snapd-qt compilation in clang
+    - Fix snapd-qt compilation on systems that use different versions of MOC
+    - snapd-qt improvements to better match best practise
+    - Include enum headers in snapd-glib.h
+    - Fix compile warnings using clang
+    - Documentation improvements
+  * debian/control:
+    - Use standards version 4.0.0
+    - Fix GIR section and dependencies
+  * debian/libsnapd-glib1.symbols:
+  * debian/libsnapd-qt1.symbols:
+    - Updated
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Thu, 06 Jul 2017 16:04:55 +1200
+
+snapd-glib (1.13-0ubuntu1) artful; urgency=medium
+
+  * New upstream release:
+    - New API:
+      - snapd_snap_get_contact
+    - Check minimum versions of dependencies
+    - Fix swapped variable names in snapd_client_find_section header proptotype.
+  * debian/control:
+    - Set minimum dependency versions
+  * debian/libsnapd-glib1.symbols:
+  * debian/libsnapd-qt1.symbols:
+    - Updated
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Tue, 20 Jun 2017 15:28:26 +1200
+
+snapd-glib (1.12-0ubuntu1) artful; urgency=medium
+
+  * New upstream release:
+    - New API:
+      - snapd_client_install2_async
+      - snapd_client_install2_finish
+      - snapd_client_install2_sync
+    - Deprecated API:
+      - snapd_client_install_async
+      - snapd_client_install_finish
+      - snapd_client_install_sync
+  * debian/libsnapd-glib1.symbols:
+  * debian/libsnapd-qt1.symbols:
+    - Updated
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Mon, 15 May 2017 14:36:31 +1200
+
+snapd-glib (1.11-0ubuntu1) artful; urgency=medium
+
+  * New upstream release:
+    [ 1.10 ]
+    - Remove gettext-domain from Polkit files - this is an Ubuntu extension that
+      doesn't work elsewhere.
+    [ 1.11 ]
+    - New API:
+      - snapd_system_information_get_binaries_directory
+      - snapd_system_information_get_kernel_version
+      - snapd_system_information_get_mount_directory
+    - Fix calls not working inside threads.
+    - Fix reference counting error when calling snapd_client_get_interfaces and
+      snapd_client_create_user.
+  * debian/libsnapd-glib1.symbols:
+  * debian/libsnapd-qt1.symbols:
+    - Updated
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Thu, 04 May 2017 12:37:11 +1200
+
+snapd-glib (1.9-0ubuntu1) zesty; urgency=medium
+
+  * New upstream release:
+    - New API:
+      - snapd_app_get_daemon_type
+      - snapd_client_install_stream_async
+      - snapd_client_install_stream_finish
+      - snapd_client_install_stream_sync
+      - snapd_client_try_async
+      - snapd_client_try_finish
+      - snapd_client_try_sync
+    - Fix iterator double use parsing of apps/aliases
+    - Fix Qt tests not linking against local snapd-glib
+  * debian/libsnapd-glib1.symbols:
+  * debian/libsnapd-qt1.symbols:
+    - Updated
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Fri, 24 Mar 2017 15:22:26 +1300
+
+snapd-glib (1.8-0ubuntu1) zesty; urgency=medium
+
+  * New upstream release:
+    - New API:
+      - snapd_client_get_assertions_async
+      - snapd_client_get_assertions_finish
+      - snapd_client_get_assertions_sync
+      - snapd_client_add_assertions_async
+      - snapd_client_add_assertions_finish
+      - snapd_client_add_assertions_sync
+      - snapd_client_get_aliases_async
+      - snapd_client_get_aliases_finish
+      - snapd_client_get_aliases_sync
+      - snapd_client_enable_aliases_async
+      - snapd_client_enable_aliases_finish
+      - snapd_client_enable_aliases_sync
+      - snapd_client_disable_aliases_async
+      - snapd_client_disable_aliases_finish
+      - snapd_client_disable_aliases_sync
+      - snapd_client_reset_aliases_async
+      - snapd_client_reset_aliases_finish
+      - snapd_client_reset_aliases_sync
+      - snapd_client_run_snapctl_async
+      - snapd_client_run_snapctl_finish
+      - snapd_client_run_snapctl_sync
+      - snapd_snap_get_jailmode
+    - Add snapd-qt regression tests.
+    - Add missing snapd-qt API
+    - Fix memory leaks in snapd-qt
+  * debian/libsnapd-glib1.symbols:
+  * debian/libsnapd-qt1.symbols:
+    - Updated
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Wed, 22 Mar 2017 17:13:20 +1300
+
+snapd-glib (1.7-0ubuntu1) zesty; urgency=medium
+
+  * New upstream release:
+    - New API:
+      - snapd_app_get_aliases
+      - snapd_client_get_sections_sync
+      - snapd_client_get_sections_async
+      - snapd_client_get_sections_finish
+      - snapd_snap_get_tracking_channel
+      - snapd_system_information_get_managed
+      - snapd_system_information_get_store
+  * debian/libsnapd-glib1.symbols:
+  * debian/libsnapd-qt1.symbols:
+    - Updated
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Fri, 10 Feb 2017 11:24:24 +1300
+
+snapd-glib (1.6-0ubuntu1) zesty; urgency=medium
+
+  * New upstream release:
+    - Fix screenshots not working on 32 bit architectures
+  * debian/patches/screenshot-fix.patch:
+    - Applied upstream
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Thu, 26 Jan 2017 17:11:13 +1300
+
+snapd-glib (1.5-0ubuntu3) zesty; urgency=medium
+
+  * debian/patches/series:
+    - Add missing series file
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Thu, 26 Jan 2017 16:58:09 +1300
+
+snapd-glib (1.5-0ubuntu2) zesty; urgency=medium
+
+  * debian/patches/screenshot-fix.patch:
+    - Fix screenshots decoding not working in 32 bit architecures
+  * debian/libsnapd-qt1.symbols:
+    - Make non-public symbols optional for architectures that don't generate
+      them.
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Thu, 26 Jan 2017 16:41:31 +1300
+
+snapd-glib (1.5-0ubuntu1) zesty; urgency=medium
+
+  * New upstream release:
+    - Add new API: snapd_client_refresh_all, snapd_client_find_refreshable.
+    - Use new objects for progress callbacks - API break, ABI will continue to
+      work.
+    - Add Qt/QML bindings.
+    - Add new errors reported by snapd.
+    - Fix payment errors being detected.
+    - Close socket on unref.
+    - Fix small memory leaks.
+    - Add regression tests.
+  * debian/control:
+  * debian/libsnapd-qt1.install:
+  * debian/libsnapd-qt1.symbols:
+  * debian/qml-module-snapd.install:
+  * debian/libsnapd-qt-dev.install:
+  * debian/libsnapd-glib1.install:
+  * debian/libsnapd-glib-dev.install:
+    - Add new packages libsnapd-qt1, qml-module-snapd, libsnapd-qt-dev
+    - Add build-depends on qtbase5-dev, qtdeclarative5-dev
+  * debian/libsnapd-glib1.symbols:
+    - Updated
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Thu, 26 Jan 2017 09:01:05 +1300
+
+snapd-glib (1.4-0ubuntu1) zesty; urgency=medium
+
+  * New upstream release:
+    - Fix crash in snapd-login-service when snapd stops (LP: #1646784)
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Tue, 06 Dec 2016 15:50:17 +1300
+
+snapd-glib (1.3-0ubuntu1) zesty; urgency=medium
+
+  * New upstream release:
+    - Use new payment API (now stable).
+    - Add API to get plug/slot attributes.
+    - Add API for create user API.
+    - Add async version of snapd_client_connect_sync().
+    - Fix crash when fail to connect to snapd.
+    - Don't fail assertion if attempt to connect while already connected.
+    - Fix transfer notation on GDateTime objects.
+    - Fix build not regenerating .vapi.
+    - Small documentation fixes.
+    - Fix small memory leak.
+  * debian/libsnapd-glib1.symbols:
+    - Updated (removed symbols were from disabled payment API)
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Mon, 14 Nov 2016 16:26:23 +1300
+
+snapd-glib (1.2-0ubuntu2) zesty; urgency=medium
+
+  * debian/control:
+    - let libsnapd-glib1 recommends snapd-login-service, without the 
+      service installed the snap interactions are not working (lp: #1635270)
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Thu, 20 Oct 2016 16:31:17 +0200
+
+snapd-glib (1.2-0ubuntu1) yakkety; urgency=medium
+
+  * New upstream stable release:
+    * Use so version 1 now this is stable (should have been done at 1.0 release)
+  * debian/control:
+  * debian/gir1.2-snapd-1.install:
+  * debian/libsnapd-glib1.install:
+  * debian/libsnapd-glib1.symbols:
+    - Update for new soname
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Thu, 13 Oct 2016 16:31:07 +1300
+
+snapd-glib (1.1-0ubuntu1) yakkety; urgency=medium
+
+  * New upstream stable release:
+    [ 1.0 ]
+    - Add support for screenshots
+    - Throw exception if not connected instead of using assert
+    - Be more paranoid about invalid SnapdAuthData
+    - Add an autogen.sh
+    - Tidy up configure summary
+    [ 1.1 ]
+    - Fix screenshot documentation not being used
+  * debian/libsnapd-glib0.symbols:
+    - Updated
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Thu, 13 Oct 2016 15:50:36 +1300
+
+snapd-glib (0.14-0ubuntu1) yakkety; urgency=medium
+
+  * New upstream release:
+    - Fix header guards in snapd-login.h which stopped it being included  
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Mon, 05 Sep 2016 15:44:20 +1200
+
+snapd-glib (0.13-0ubuntu1) yakkety; urgency=medium
+
+  * New upstream release:
+    [ 0.12 ]
+    - Rename error codes for consistency (API and ABI break)
+    - Generate documentation using GTK-Doc
+    [ 0.13 ]
+    - Make snapd_client_login() consistent with snapd_login() (API and ABI
+      break)
+    - Complete documentation on all functions / types (fixes make check)
+    - Disable buy support for now - it is being redesigned in snapd.
+  * debian/control:
+  * debian/rules:  
+  * debian/libsnapd-glib-dev.install:
+    - Build documentation
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Sun, 04 Sep 2016 22:20:18 +1200
+
+snapd-glib (0.11-0ubuntu1) yakkety; urgency=medium
+
+  * New upstream release:
+    - Use doubles for price amounts (API and ABI break)
+    - Make Polkit policy translatable
+    - Fix errors not being correct on first use of snapd_login 
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Thu, 01 Sep 2016 17:00:39 +1200
+
+snapd-glib (0.10-0ubuntu2) yakkety; urgency=medium
+
+  * debian/control:
+    - Replace gobject-introspection build dependency with
+      libgirepository1.0-dev
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Wed, 31 Aug 2016 11:20:29 +1200
+
+snapd-glib (0.10-0ubuntu1) yakkety; urgency=medium
+
+  * New upstream release:
+    [ 0.9 ]
+    - Rename SnapdClientError to SnapdError (API and ABI break)
+    - Add a D-Bus service to allow login without root permissions
+    - Add asserts to check we are connected before making requests
+    [ 0.10 ]
+    - Fix snapd-login-service D-Bus configuration
+    - Improve documentation about root requirements for snapd_client_login
+    - Distribute license files
+    - Fix compiler warning
+  * debian/control:
+    - Add snapd-login-service package
+    - Add build-depends on libjson-glib-dev, libpolkit-gobject-1-dev,
+      libsoup2.4-dev, valac
+    - Add Vcs-Bzr link
+  * debian/snapd-login-service.install:
+    - Add snapd-login-service package
+  * debian/libsnapd-glib0.symbols:
+    - Updated
+  * debian/copyright:
+    - Update to latest format
+  * debian/rules:
+    - Drop unnecessary LDFLAGS
+    - Set libexec dir so not multi-arched
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Wed, 31 Aug 2016 10:51:16 +1200
+
+snapd-glib (0.8-0ubuntu1) yakkety; urgency=medium
+
+  * New upstream release:
+    - Store auth data inside SnapdClient (API and ABI break)
+    - Return suggested currency in find request (API and ABI break)
+    - Only call progress callback if something changes
+  * debian/libsnapd-glib0.symbols:
+    - Updated
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Fri, 26 Aug 2016 10:27:02 +1200
+
+snapd-glib (0.7-0ubuntu1) yakkety; urgency=medium
+
+  * New upstream release:
+    - Return error codes when icons fail to download
+    - Fix sync methods not working inside async callbacks
+    - Use GDateTime for date/time values returned by snapd
+  * debian/libsnapd-glib0.symbols:
+    - Updated
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Thu, 25 Aug 2016 16:32:09 +1200
+
+snapd-glib (0.6-0ubuntu1) yakkety; urgency=medium
+
+  * New upstream release:
+    - Fix memory ownership for returned results from list/find
+    - Add missing docstrings
+    - Fix small memory leaks
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Mon, 22 Aug 2016 21:55:22 +1200
+
+snapd-glib (0.5-0ubuntu1) yakkety; urgency=medium
+
+  * New upstream release:
+    - Add copyright headers
+    - Mark authentication parameters optional
+  * debian/copyright:
+    - Update copyright information
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Mon, 22 Aug 2016 21:07:59 +1200
+
+snapd-glib (0.4-0ubuntu1) yakkety; urgency=medium
+
+  * Initial release.
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Fri, 19 Aug 2016 14:08:00 +1200
